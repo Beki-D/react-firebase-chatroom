@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 
+import {BiSend} from 'react-icons/bi';
+
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -88,7 +90,7 @@ function ChatRoom() {
       <form onSubmit={sendMessage}>
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
 
-        <button type='submit'>Send</button>
+        <button type='submit'>Send <BiSend /> </button>
 
       </form>
     </>
