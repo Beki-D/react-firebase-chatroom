@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './App.css';
 
 import {BiSend} from 'react-icons/bi';
+import {FcGoogle} from 'react-icons/fc';
+import {FiLogOut} from 'react-icons/fi';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -49,13 +51,13 @@ function SignIn() {
   }
 
   return (
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
+    <button onClick={signInWithGoogle}><FcGoogle /> Sign in with Google</button>
   )
 }
 
 function SignOut() {
   return auth.currentUser && (
-    <button onClick={() => auth.signOut()}>Sign Out</button>
+    <button onClick={() => auth.signOut()}>Sign Out <FiLogOut /> </button>
   )
 }
 
