@@ -9,7 +9,7 @@ import 'firebase/compat/firestore';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { async } from '@firebase/util';
+import { useRef } from 'react';
 
 firebase.initializeApp({
   apiKey: "AIzaSyB4fHjJ7R0bWO7M-BmcxfE52CUmaRKdM0c",
@@ -59,6 +59,8 @@ function SignIn() {
 // }
 
 function ChatRoom() {
+  const dummy = useRef();//dummy ref for scroll down
+
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
 
@@ -79,18 +81,22 @@ function ChatRoom() {
     });
 
     setFormValue('');
+
+    dummy.current.scrollIntoView({ behavior: 'smooth'});
   }
 
   return (
     <>  
-      <div>
+      <main>
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-      </div>
+
+        <span ref={dummy}></span>
+      </main>
 
       <form onSubmit={sendMessage}>
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
 
-        <button type='submit'>Send <BiSend /> </button>
+        <button type='submit' disabled={!formValue}>Send <BiSend /> </button>
 
       </form>
     </>
@@ -104,7 +110,7 @@ function ChatMessage(props) {
 
   return (
     <div className={`message ${messageClass}`}>
-      <img src={photoURL} alt='user_pic' referrerPolicy='no-referrer' />
+      <img src={photoURL || 'https://api.multiavatar.com/Binx Bond.png'} alt='user_pic' referrerPolicy='no-referrer' />
       <p>{text}</p>
     </div>  
   ) 
