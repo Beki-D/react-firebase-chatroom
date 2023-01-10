@@ -32,6 +32,7 @@ function App() {
     <div className="App">
       <header>
         <h1>Chatroom</h1>
+        <SignOut />
       </header>
       
       <section>
@@ -52,11 +53,11 @@ function SignIn() {
   )
 }
 
-// function SignOut() {
-//   return auth.currentUser && (
-//     <button onClick={() => auth.signOut()}>Sign Out</button>
-//   )
-// }
+function SignOut() {
+  return auth.currentUser && (
+    <button onClick={() => auth.signOut()}>Sign Out</button>
+  )
+}
 
 function ChatRoom() {
   const dummy = useRef();//dummy ref for scroll down
