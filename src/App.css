@@ -99,6 +99,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
+i {
+  color: #0b93f6;
+  font-size: 2rem;
+}
 
 .sign-in {
   color: #282c34;
