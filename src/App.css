@@ -104,6 +104,15 @@ i {
   font-size: 2rem;
 }
 
+#logout {
+  color:#e5e5ea;;
+  font-size: 2.5rem;
+}
+
+#logout:hover {
+  color: #868688;
+}
+
 .sign-in {
   color: #282c34;
   background: white;
